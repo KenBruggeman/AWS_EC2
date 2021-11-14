@@ -2,10 +2,9 @@
   become: true
   roles:
     - bertvv.rh-base
-    - ansible-role-java # geerlingguy.java
-    - ansible-role-jenkins # lean_delivery.jenkins
-    - ansible-role-pip # geerlingguy.pip
-    - ansible-role-docker # geerlingguy.docker
-    - ansible-role-sonarqube # lean_delivery.sonarqube
-    - ansible-role-sonar-scanner # diodonfrost.sonar_scanner
-    
+    - geerlingguy.java
+    - lean_delivery.jenkins
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - lean_delivery.sonarqube
+    - diodonfrost.sonar_scanner
