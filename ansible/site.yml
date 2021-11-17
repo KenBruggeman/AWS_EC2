@@ -2,11 +2,6 @@
   become: true
   roles:
     - bertvv.rh-base
-    - shelleg.ansible_role_portainer
-    - linux-system-roles.cockpit
-    # - geerlingguy.java
-    # - lean_delivery.jenkins
-    # - geerlingguy.pip
-    # - geerlingguy.docker
-    # - lean_delivery.sonarqube
-    # - diodonfrost.sonar_scanner
+    - cloudalchemy.node_exporter
+    - geerlingguy.pip
+    - geerlingguy.docker

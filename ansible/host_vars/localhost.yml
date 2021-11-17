@@ -6,10 +6,9 @@ rhbase_firewall_allow_services: # sudo firewall-cmd --get-services = list of nam
   - http
   - https
   - ssh
-  # - cockpit
 
-# rhbase_firewall_allow_ports:
-#  - 9090/tcp # Cockpit port
+rhbase_firewall_allow_ports:
+  - 9100/tcp # Node Exporter (Prometheus)
 
 rhbase_repositories:
   - epel-release
