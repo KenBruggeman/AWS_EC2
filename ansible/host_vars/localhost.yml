@@ -1,0 +1,39 @@
+# Role configurations on server for DevOps project
+
+## BASIC SERVER SETUP
+
+rhbase_firewall_allow_services: # sudo firewall-cmd --get-services = list of names of services that can be applied here
+  - http
+  - https
+  - ssh
+  # - cockpit
+
+# rhbase_firewall_allow_ports:
+#  - 9090/tcp # Cockpit port
+
+rhbase_repositories:
+  - epel-release
+
+rhbase_enable_repos:
+  - epel
+
+rhbase_users:
+  - name: ken
+    comment: 'Ken Bruggeman'
+    groups:
+      - users
+      - wheel
+    password: $6$1NW6Y5wXVXidG.mu$cvC0NYcD4e6GzSF.3.Pgbz61i7C5HlcImhzdzqy3djHqoTG1TuAc1zZBEU3dWXDz9RPaQiYcu//oL4De1LFju.
+    ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDQITKpgq6UnIzE6HAad820Z13gjuGnl+X/m4FMp0UjXK3j0wXMbAkC0+RJTR8P+OcK5oK8hj2Qwwypy8ARd9+QstN/MafyMcNYa72TjfjDBDG4f/5+0DSkOMlzD9U6UlkCR6zNh0EmBrXBd4TZzchTsjGqJhbEm8oBCLMkQwOUtj5+ZLuTme1VodwylqeuuHUKYNFbwQ2Wdau7hBtWX4HnE2ebDqbhuqn7e6yWNtRPu2euRpY6IrMoq5g3IChxjGYhQzgCjxHD6jV8jHfNGkuqfktRj2Od4Pl6ywYDPQoc1ASzeoFjgpO4CnYgKHod1J1tXmOkd1wN2R4XG11mju6gIBehSSOSq17ywIDpbcXgnRRYIMbn2h4LZuoewJmMMKa9oReVz1jXqxOzlesuqOya0lS3nLZ7LPptf/2KOSLGiJWQJoGt4/99YesN22oO2HQcw5saCMkLaUyZCQjXBDIdMNCd0OucCq8Svdyf5TjxvdQ9yiH0WgOZihr+vIPzxIiibnKs1VL59Nu7YnYiaK5299ZABGSqMrgpPzotT60tYmL8RUn/MsVd92S+vP35dzlhPfUrU4VofEit6EyYCaNW+2f/E61h0qqSmpF/O5ybRT6rEAt/q5mU0KXTH6tnOUARevSfKrBGUg6FxfeTsoIAdDSjomai03U+Ku7n+dn/HQ== ken.bruggeman@student.hogent.be
+
+rhbase_install_packages:
+  - bash-completion
+  - bind-utils
+  - git
+  - nano
+  - tree
+  - wget
+  - vim-enhanced
+  - curl
+  - zip
+  - unzip

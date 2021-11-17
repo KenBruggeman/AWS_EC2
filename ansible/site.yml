@@ -1,10 +1,12 @@
-- hosts: jenkins
+- hosts: localhost
   become: true
   roles:
     - bertvv.rh-base
-    - geerlingguy.java
-    - lean_delivery.jenkins
-    - geerlingguy.pip
-    - geerlingguy.docker
-    - lean_delivery.sonarqube
-    - diodonfrost.sonar_scanner
+    - shelleg.ansible_role_portainer
+    - linux-system-roles.cockpit
+    # - geerlingguy.java
+    # - lean_delivery.jenkins
+    # - geerlingguy.pip
+    # - geerlingguy.docker
+    # - lean_delivery.sonarqube
+    # - diodonfrost.sonar_scanner
