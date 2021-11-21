@@ -1,6 +1,6 @@
 # Role configurations on server for DevOps project
 
-## BASIC SERVER SETUP
+## AWS SERVER SETUP
 
 rhbase_firewall_allow_services: # sudo firewall-cmd --get-services = list of names of services that can be applied here
   - http
@@ -36,3 +36,6 @@ rhbase_install_packages:
   - curl
   - zip
   - unzip
+
+pip_install_packages:
+  - name: docker
