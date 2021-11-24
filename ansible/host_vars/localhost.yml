@@ -36,7 +36,3 @@ rhbase_install_packages:
   - curl
   - zip
   - unzip
-
-docker_users:
-  - ec2-user
-  - ken
