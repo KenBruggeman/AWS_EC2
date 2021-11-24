@@ -1,6 +1,6 @@
 - hosts: localhost
   become: true
   roles:
-    - bertvv.rh-base
-    - cloudalchemy.node_exporter
+  #  - bertvv.rh-base
+  #  - cloudalchemy.node_exporter
     - dockerlab

@@ -29,7 +29,7 @@
     state: present
   tags: dockerlab
 
-- name: Ensure user Vagrant is a member of the Docker group
+- name: Ensure user vagrant is a member of the Docker group
   user:
     name: vagrant
     groups:
@@ -74,12 +74,13 @@
 # spun up by students get the expected, default IP address. We specify the
 # subnet, since we will need the IP address of the host system and we want that
 # to be predictable (default: 172.30.0.1)
--- name: Create a Docker internal network for permanent containers
+- name: Create a Docker internal network for permanent containers
   docker_network:
-    name: app_net
+    name: mgmt_net
     ipam_config:
-      - subnet: "172.30.0.0/16"
-        gateway: "172.30.0.1"
+      - subnet: "{{ dockerlab_subnet }}"
+        gateway: "{{ dockerlab_ip }}"
+  tags: dockerlab
 
 - name: Create a Docker container for Portainer
   docker_container:
@@ -87,30 +88,16 @@
     image: portainer/portainer-ce
     state: started
     restart_policy: always
-    networks:
-      - name: app_net
     ports:
-      #- 8000:8000
-      - 9090:9000
+      - 8000:8000
+      - 9000:9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-
-- name: Create a Docker container for MySQL
-  docker_container:
-    name: db
-    image: mysql:5.7
-    state: started
-    restart_policy: always
-    ports:
-      - 3306:3306
-    volumes:
-      - mysql-data:/var/lib/my
+    # container_default_behavior: compatibility
     networks:
-      - name: app_net
-        ipv4_address: 172.30.0.10
-    env:
-      MYSQL_DATABASE: HIERdbmysql
-      MYSQL_USER: appusr
-      MYSQL_PASSWORD: l3tmeinT4
-      MYSQL_ROOT_PASSWORD: l3tmeinT4
+      - name: mgmt_net
+    purge_networks: true
+    networks_cli_compatible: true
+    network_mode: default
+  tags: dockerlab
