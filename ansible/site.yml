@@ -4,4 +4,4 @@
     - bertvv.rh-base
     - cloudalchemy.node_exporter
     - geerlingguy.pip
-    - geerlingguy.docker
+    - ansible-role-docker

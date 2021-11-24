@@ -1,38 +1,102 @@
 ---
-# Edition can be one of: 'ce' (Community Edition) or 'ee' (Enterprise Edition).
-docker_edition: 'ce'
-docker_package: "docker-{{ docker_edition }}"
-docker_package_state: present
+# defaults file for ansible-role-docker
 
-# Service options.
-docker_service_state: started
-docker_service_enabled: true
-docker_restart_handler_state: restarted
+docker_version: 18.06
 
-# Docker Compose options.
-docker_install_compose: true
-docker_compose_version: "1.26.0"
-docker_compose_url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
-docker_compose_path: /usr/local/bin/docker-compose
+# see https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
+# for references
+daemon_conf:
+  storage-driver: overlay2
+  # authorization-plugins: []
+  # data-root: ''
+  # dns: []
+  # dns-opts: []
+  # dns-search: []
+  # exec-opts: []
+  # exec-root: ''
+  # experimental: false
+  # features: {}
+  # storage-opts: []
+  # labels: []
+  # live-restore: true
+  # log-driver: json-file
+  # log-opts:
+  #   max-size: 10m
+  #   max-file: '5'
+  #   labels: somelabel
+  #   env: os,customer
+  # mtu: 0
+  # pidfile: ''
+  # cluster-store: ''
+  # cluster-store-opts: {}
+  # cluster-advertise: ''
+  # max-concurrent-downloads: 3
+  # max-concurrent-uploads: 5
+  # default-shm-size: 64M
+  # shutdown-timeout: 15
+  # debug: true
+  # hosts: []
+  # log-level: ''
+  # tls: true
+  # tlsverify: true
+  # tlscacert: ''
+  # tlscert: ''
+  # tlskey: ''
+  # swarm-default-advertise-addr: ''
+  # api-cors-header: ''
+  # selinux-enabled: false
+  # userns-remap: ''
+  # group: ''
+  # cgroup-parent: ''
+  # default-ulimits:
+  #   nofile:
+  #     Name: nofile
+  #     Hard: 64000
+  #     Soft: 64000
+  # init: false
+  # init-path: "/usr/libexec/docker-init"
+  # ipv6: false
+  # iptables: false
+  # ip-forward: false
+  # ip-masq: false
+  # userland-proxy: false
+  # userland-proxy-path: "/usr/libexec/docker-proxy"
+  # ip: 0.0.0.0
+  # bridge: ''
+  # bip: ''
+  # fixed-cidr: ''
+  # fixed-cidr-v6: ''
+  # default-gateway: ''
+  # default-gateway-v6: ''
+  # icc: false
+  # raw-logs: false
+  # allow-nondistributable-artifacts: []
+  # registry-mirrors: []
+  # seccomp-profile: ''
+  # insecure-registries: []
+  # no-new-privileges: false
+  # default-runtime: runc
+  # oom-score-adjust: -500
+  # node-generic-resources:
+  # - NVIDIA-GPU=UUID1
+  # - NVIDIA-GPU=UUID2
+  # runtimes:
+  #   cc-runtime:
+  #     path: "/usr/bin/cc-runtime"
+  #   custom:
+  #     path: "/usr/local/bin/my-runc-replacement"
+  #     runtimeArgs:
+  #     - "--debug"
+  # default-address-pools:
+  # - base: 172.80.0.0/16
+  #   size: 24
+  # - base: 172.90.0.0/16
+  #   size: 24
 
-# Docker repo URL.
-docker_repo_url: https://download.docker.com/linux
+docker_users:
+  - '{{ ansible_user_id }}'
 
-# Used only for Debian/Ubuntu. Switch 'stable' to 'nightly' if needed.
-docker_apt_release_channel: stable
-docker_apt_arch: amd64
-docker_apt_repository: "deb [arch={{ docker_apt_arch }}] {{ docker_repo_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}"
-docker_apt_ignore_key_error: true
-docker_apt_gpg_key: "{{ docker_repo_url }}/{{ ansible_distribution | lower }}/gpg"
+docker_packages_additional: []
 
-# Used only for RedHat/CentOS/Fedora.
-docker_yum_repo_url: "{{ docker_repo_url }}/{{ (ansible_distribution == 'Fedora') | ternary('fedora','centos') }}/docker-{{ docker_edition }}.repo"
-docker_yum_repo_enable_nightly: '0'
-docker_yum_repo_enable_test: '0'
-docker_yum_gpg_key: "{{ docker_repo_url }}/centos/gpg"
-
-# A list of users who will be added to the docker group.
-docker_users: [jenkins, vagrant]
-
-# Docker daemon options as a dict
-docker_daemon_options: {}
+docker_repo: '{{ docker_repo_default }}'
+docker_gpg: '{{ docker_gpg_default }}'

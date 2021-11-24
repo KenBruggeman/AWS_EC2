@@ -1,36 +1,34 @@
 ---
-dependencies: []
-
 galaxy_info:
-  role_name: docker
-  author: geerlingguy
-  description: Docker for Linux.
-  company: "Midwestern Mac, LLC"
-  license: "license (BSD, MIT)"
-  min_ansible_version: 2.4
+  role_name: "docker"
+  author: "Lean Delivery team <team@lean-delivery.com>"
+  description: "Lean Delivery Docker install"
+  company: "Epam Systems"
+  license: "Apache"
+  min_ansible_version: "2.8"
+  issue_tracker_url: "https://github.com/lean-delivery/ansible-role-docker/issues"
   platforms:
-    - name: EL
+    - name: "Ubuntu"
       versions:
-        - 7
-        - 8
-    - name: Fedora
+        - "bionic"
+        - "xenial"
+    - name: "Debian"
       versions:
-        - all
-    - name: Debian
+        - "stretch"
+        - "buster"
+    - name: "EL"
       versions:
-        - stretch
-        - buster
-        - bullseye
-    - name: Ubuntu
+        - "7"
+    - name: 'Amazon'
       versions:
-        - xenial
-        - bionic
-        - focal
+        - '2017.12'
+        - 'Candidate'
+
   galaxy_tags:
-    - web
-    - system
-    - containers
-    - docker
-    - orchestration
-    - compose
-    - server
+    - "development"
+    - "system"
+    - "container"
+    - "packaging"
+    - "docker"
+
+dependencies: []
