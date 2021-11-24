@@ -3,4 +3,4 @@
   roles:
   #  - bertvv.rh-base
   #  - cloudalchemy.node_exporter
-    - dockerlab
+    - ansible-role-docker
