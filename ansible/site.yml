@@ -1,6 +1,6 @@
 - hosts: localhost
   become: true
   roles:
-  #  - bertvv.rh-base
-  #  - cloudalchemy.node_exporter
-    - ansible-role-docker
+    - bertvv.rh-base
+    - cloudalchemy.node_exporter
+    - ansible-role-docker # lean_delivery.docker + extra.md in root voor toevoegen containers
