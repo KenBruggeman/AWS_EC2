@@ -37,5 +37,9 @@ rhbase_install_packages:
   - zip
   - unzip
 
+docker_users:
+  - ken
+  - ec2-user
+
 pip_install_packages:
   - name: docker
