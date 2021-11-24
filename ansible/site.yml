@@ -3,5 +3,4 @@
   roles:
     - bertvv.rh-base
     - cloudalchemy.node_exporter
-    - geerlingguy.pip
     - ansible-role-docker

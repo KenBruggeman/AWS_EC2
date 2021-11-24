@@ -36,6 +36,8 @@ rhbase_install_packages:
   - curl
   - zip
   - unzip
+  - docker
+  - docker-compose
 
 docker_users:
   - ken
@@ -43,4 +45,5 @@ docker_users:
 
 pip_install_packages:
   - name: docker
-  - name: docker-py
+  - name: netaddr
+  - name: yamllint
