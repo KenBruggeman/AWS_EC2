@@ -1,3 +1,8 @@
+- name: Ensure the necessary (pip) packages are installed
+  pip:
+    name: "{{ dockerlab_pip_packages }}"
+    state: present
+
 - name: Create a Docker internal network for permanent containers
   docker_network:
     name: app_net
