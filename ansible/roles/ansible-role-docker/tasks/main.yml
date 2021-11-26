@@ -18,3 +18,6 @@
 
 - name: Install docker daemon
   include_tasks: install-docker.yml
+
+- name: Create network and setup Portainer/MySQL containers
+  include_tasks: container-setup.yml
